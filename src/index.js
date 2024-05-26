@@ -1,9 +1,13 @@
 import './styles.css';
 import { createTodo } from "./maketodo";
 import { createProject } from "./project";
-import { addTaskSubmit } from './addsubmitclose';
+import { addTask, removeTask } from './addsubmitclose';
 
-function createAllTasks() {
+document.addEventListener("DOMContentLoaded", function() {
+    //createAllTasks();
+    addTask();
+});
+
+/*function createAllTasks() {
     allTasks = createProject();
-}
-addTaskSubmit();
+}*/
