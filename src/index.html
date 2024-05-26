@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="title">ToDo List</div>
+            <div class="addtask">Add Task</div>
+            <div class="one alltasks">
+                <div class="text">All Tasks</div>
+                <div class="number">0</div>
+            </div>
+            <div class="one today">
+                <div class="text">Today</div>
+                <div class="number">0</div>
+            </div>
+            <div class="one overdue">
+                <div class="text">Overdue</div>
+                <div class="number">0</div>
+            </div>
+            <div class="myprojects">
+                <div class="projecttitle">My Projects</div>
+                <div class="one project">
+                    <div class="text">Website</div>
+                    <div class="number">0</div>
+                </div>
+            </div>
+            <div class="create">+ Create a new project</div>
+        </div>
+        <div class="mainpage">
+            <div class="mainpagecontainer">
+                <div class="one">
+                    <div class="alltasks">All tasks</div>
+                    <button class="taskbutton">+ Add task</button>
+                </div>
+                <form class="taskform">
+                    <div class="formContainer">
+                        <label for="name"></label>
+                        <input type="text" id="name" name="name" placeholder="Task name (required)" required><br>
+
+                        <label for="date"></label>
+                        <input type="date" id="date" name="date" required><br>
+
+                        <select name="prio" id="prio">
+                            <option value="none" selected>No priority</option>
+                            <option value="low">Low priority</option>
+                            <option value="mid">Medium priority</option>
+                            <option value="high">High priority</option>
+                        </select><br>
+
+                        <select name="tasks" id="tasks">
+                            <option value="all">Tasks</option>
+                            <option value="project1">Project 1</option>
+                            <option value="project2">Project 2</option>
+                        </select>
+
+                        <label for="descrip"></label>
+                        <input type="text" id="descrip" name="descrip" placeholder="Notes (optional)">
+
+                        <button type="button" class="button close">Close</button>
+                        <button type="submit" class="button submitButton">Submit</button>
+                    </div>
+                </form>
+                <div class="line"></div>
+                <div class="task">
+                    <div class="markdone"></div>
+                    <div class="things">
+                        <div class="taskname">Charlie</div>
+                        <div class="description">Charlie</div>
+                        <div class="date">Charlie</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
