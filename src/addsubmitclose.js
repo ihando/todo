@@ -12,11 +12,13 @@ function addTaskSubmit() {
         const date = document.getElementById("date").value;
         const prio = document.getElementById("prio").value;
         let projectName = document.getElementById("projects").value;
+        //if all tasks dropdown is selected, set the projectName to null (not apart of any project)
         if (projectName === "saumyazaumya") {
             projectName = null;
         }
-        console.log(projectName)
         const description = document.getElementById("descrip").value;
+
+        //Looks for the matching project and checks if a todo with the same name exists
         for (let i=0; i<projects.length; i++) {
             if (projectName === projects[i].name){
                 project = projects[i];
@@ -28,6 +30,7 @@ function addTaskSubmit() {
                 break;
             }
         }
+        //checks to make sure the form submission todo name doesnt match other todos for only todos with no project (allTodo)
         for (let i=0; i<allTodo.length; i++){
             if (allTodo[i].projectName === null) {
                 if (name === allTodo[i].title) {
@@ -35,6 +38,7 @@ function addTaskSubmit() {
                 }
             }
         }
+        //runs if the two checks above pass
         if (status) {
             let tempTodo = createTodo(name, description, date, prio, projectName);
             allTodo.push(tempTodo);
