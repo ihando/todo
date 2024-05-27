@@ -1,6 +1,8 @@
 import { createTodo } from "./maketodo";
 import { projects } from "./project";
 
+
+export let allTodo = [];
 function addTaskSubmit() {
     document.querySelector(".taskform").addEventListener("submit", e => {
         e.preventDefault();
@@ -9,20 +11,33 @@ function addTaskSubmit() {
         const name = document.getElementById("name").value;
         const date = document.getElementById("date").value;
         const prio = document.getElementById("prio").value;
-        const projectName = document.getElementById("projects").value;
+        let projectName = document.getElementById("projects").value;
+        if (projectName === "saumyazaumya") {
+            projectName = null;
+        }
+        console.log(projectName)
         const description = document.getElementById("descrip").value;
         for (let i=0; i<projects.length; i++) {
             if (projectName === projects[i].name){
                 project = projects[i];
+                for (let j=0; j<project.todoList.length; j++) {
+                    if (name === project.todoList[i].title){
+                        status = false;
+                    }
+                }
+                break;
             }
         }
-        for (let i=0; i<project.todoList.length; i++) {
-            if (name === project.todoList[i].title){
-                status = false;
+        for (let i=0; i<allTodo.length; i++){
+            if (allTodo[i].projectName === null) {
+                if (name === allTodo[i].title) {
+                    status = false;
+                }
             }
         }
         if (status) {
-            createTodo(name, description, date, prio, projectName)
+            let tempTodo = createTodo(name, description, date, prio, projectName);
+            allTodo.push(tempTodo);
         }
         document.querySelector(".taskform").reset();
     }, {once: true})
@@ -52,7 +67,7 @@ function addTaskForm() {
 
         <label for="projects"></label>
         <select name="projects" id="projects" autocomplete="off">
-            <option value="all">Tasks</option>
+            <option value="saumyazaumya">Tasks</option>
             <option value="project1">Project 1</option>
             <option value="project2">Project 2</option>
         </select>

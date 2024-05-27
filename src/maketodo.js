@@ -1,12 +1,20 @@
-import { projects } from "./project";
+import { projects, createProject } from "./project";
 
 export function createTodo(title, description, dueDate, priority, projectName){
+    let project = null;
     for (let i=0; i<projects.length; i++) {
         if (projects[i].name === projectName) {
-            return null;
+            project = projects[i];
+            for (let j=0; j<project.todoList.length; j++){
+                if (project.todoList[i].title === title) {
+                    return null;
+                }
+            }
+            break;
         } 
     }
-    return {
+
+    const todo = {
         title: title,
         description: description,
         dueDate: dueDate,
@@ -20,4 +28,10 @@ export function createTodo(title, description, dueDate, priority, projectName){
             this.priority = newPriority;
         }
     }
+    for (let i=0; i<projects.length; i++) {
+        if (projects[i].name === projectName) {
+            projects[i].addTodo(todo)
+        } 
+    }
+    return todo;
 }
