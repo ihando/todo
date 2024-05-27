@@ -4,27 +4,26 @@ import { projects } from "./project";
 function addTaskSubmit() {
     document.querySelector(".taskform").addEventListener("submit", e => {
         e.preventDefault();
+        let status = true;
+        let project = null;
         const name = document.getElementById("name").value;
         const date = document.getElementById("date").value;
         const prio = document.getElementById("prio").value;
         const projectName = document.getElementById("projects").value;
         const description = document.getElementById("descrip").value;
-        let projectId = null;
-        for (const id in projects) {
-            if (projects[id].name === projectName) {
-                projectId = id;
-                break;
+        for (let i=0; i<projects.length; i++) {
+            if (projectName === projects[i].name){
+                project = projects[i];
             }
         }
-        if (projectId) {
-            const newTodo = createTodo(name, description, date, prio, projectName);
-            projects[projectId].addTodo(newTodo);
-            allTasks.addTodo(newTodo);
-        } else {
-            const newTodo = createTodo(name, description, date, prio, projectName);
-            allTasks.addTodo(newTodo) 
+        for (let i=0; i<project.todoList.length; i++) {
+            if (name === project.todoList[i].title){
+                status = false;
+            }
         }
-        
+        if (status) {
+            createTodo(name, description, date, prio, projectName)
+        }
         document.querySelector(".taskform").reset();
     }, {once: true})
 }

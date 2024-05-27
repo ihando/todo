@@ -1,34 +1,38 @@
-export let projects = {};
+export let projects = [];
 
 export function createProject(name) {
     const todoList = [];
-    const projectId = generateUniqueId();
+    let projectName;
+    for (let i=0; i<projects.length; i++) {
+        if (projects[i].name === name) {
+            return null;
+        }
+    }
+    projectName = name;
     const project = {
         todoList,
-        name: name,
-        projectId,
+        name: projectName,
         addTodo: function(todo) {
             todoList.push(todo);
         },
-        removeTodo: function(todoId) {
-            const index = todoList.findIndex(todo => todo.todoId === todoId);
-            if (index !== -1) {
-                todoList.splice(index, 1);
+        removeTodo: function(todoName) {
+            for (let i=0; i<todoList.length; i++) {
+                if (todoList[i].name === todoName) {
+                    todoList.splice(i, 1);
+                } 
             }
         }
     };
-    projects[projectId] = project;
+    projects.push(project);
     return project;
 }
 
-export function removeProject(projectId){
-    if (projects[projectId]){
-        projects[projectId].todoList = [];
-        delete projects[projectId];
+export function removeProject(name){
+    if (projects[name]){
+        projects[name].todoList = [];
+        delete projects[name];
     }
 }
-function generateUniqueId() {
-    return '_' + Math.random().toString(36).substring(2, 9);
-}
+
 
 

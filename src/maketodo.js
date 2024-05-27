@@ -1,13 +1,18 @@
-export function createTodo(title, description, dueDate, priority, project){
-    const todoId = generateUniqueIdTodo();
+import { projects } from "./project";
+
+export function createTodo(title, description, dueDate, priority, projectName){
+    for (let i=0; i<projects.length; i++) {
+        if (projects[i].name === projectName) {
+            return null;
+        } 
+    }
     return {
         title: title,
         description: description,
         dueDate: dueDate,
         priority: priority,
         complete: false,
-        project: project,
-        todoId: todoId,
+        projectName: projectName,
         markComplete: function() {
             this.complete = true;
         },
@@ -15,8 +20,4 @@ export function createTodo(title, description, dueDate, priority, project){
             this.priority = newPriority;
         }
     }
-}
-
-function generateUniqueIdTodo() {
-    return '_' + Math.random().toString(36).substring(2, 9);
 }

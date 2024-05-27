@@ -4,7 +4,7 @@ import { createProject } from "./project";
 import { addTaskE, removeTask } from './addsubmitclose';
 
 document.addEventListener("DOMContentLoaded", function() {
-    let allTasks = createProject("asdfkjasdlkjfalsdkf");
+    let allTasks = createProject("all");
     addTaskE();
 });
 
