@@ -1,14 +1,34 @@
-export function createProject() {
-    let list = [];
-    return {
-        list,
-        addTodo: function(todo){
-            list.push(todo);
+export let projects = {};
+
+export function createProject(name) {
+    const todoList = [];
+    const projectId = generateUniqueId();
+    const project = {
+        todoList,
+        name: name,
+        projectId,
+        addTodo: function(todo) {
+            todoList.push(todo);
         },
-        removeTodo: function(index){
-            list.splice(index, 1);
+        removeTodo: function(todoId) {
+            const index = todoList.findIndex(todo => todo.todoId === todoId);
+            if (index !== -1) {
+                todoList.splice(index, 1);
+            }
         }
+    };
+    projects[projectId] = project;
+    return project;
+}
+
+export function removeProject(projectId){
+    if (projects[projectId]){
+        projects[projectId].todoList = [];
+        delete projects[projectId];
     }
+}
+function generateUniqueId() {
+    return '_' + Math.random().toString(36).substring(2, 9);
 }
 
 

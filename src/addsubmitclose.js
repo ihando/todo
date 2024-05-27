@@ -1,6 +1,31 @@
+import { createTodo } from "./maketodo";
+import { projects } from "./project";
+
 function addTaskSubmit() {
     document.querySelector(".taskform").addEventListener("submit", e => {
         e.preventDefault();
+        const name = document.getElementById("name").value;
+        const date = document.getElementById("date").value;
+        const prio = document.getElementById("prio").value;
+        const projectName = document.getElementById("projects").value;
+        const description = document.getElementById("descrip").value;
+        let projectId = null;
+        for (const id in projects) {
+            if (projects[id].name === projectName) {
+                projectId = id;
+                break;
+            }
+        }
+        if (projectId) {
+            const newTodo = createTodo(name, description, date, prio, projectName);
+            projects[projectId].addTodo(newTodo);
+            allTasks.addTodo(newTodo);
+        } else {
+            const newTodo = createTodo(name, description, date, prio, projectName);
+            allTasks.addTodo(newTodo) 
+        }
+        
+        document.querySelector(".taskform").reset();
     }, {once: true})
 }
 let task = true;
@@ -26,8 +51,8 @@ function addTaskForm() {
             <option value="high">High priority</option>
         </select><br>
 
-        <label for="tasks"></label>
-        <select name="tasks" id="tasks" autocomplete="off">
+        <label for="projects"></label>
+        <select name="projects" id="projects" autocomplete="off">
             <option value="all">Tasks</option>
             <option value="project1">Project 1</option>
             <option value="project2">Project 2</option>
@@ -55,9 +80,11 @@ function removeTaskForm() {
         switchTaskStatus();
     }
 }
-export function addTask() {
-    document.querySelector(".taskbutton").addEventListener("click", addTaskForm);
-}
+
 function removeTask() {
     document.querySelector(".close").addEventListener("click", removeTaskForm)
+}
+
+export function addTaskE() {
+    document.querySelector(".taskbutton").addEventListener("click", addTaskForm);
 }
