@@ -1,5 +1,5 @@
 import { projects, createProject } from "./project";
-
+import { sidebarProjectsHTML } from "./htmlchange";
 
 let projectStatus = true;
 function changeStatus() {
@@ -23,7 +23,7 @@ function addProjectSubmit() {
         }
         document.querySelector(".projectForm").reset();
         removeProjectForm();
-
+        sidebarProjectsHTML();
     }, {once: true})
 }
 

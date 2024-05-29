@@ -1,6 +1,6 @@
 import { createTodo } from "./maketodo";
 import { projects } from "./project";
-import { changeAllTasksHTML } from "./htmlchange";
+import { changeAllTasksHTML, sidebarProjectsHTML } from "./htmlchange";
 
 
 export let allTodo = [];
@@ -48,6 +48,7 @@ function addTaskSubmit() {
         }
         document.querySelector(".taskform").reset();
         removeTaskForm();
+        sidebarProjectsHTML();
         changeAllTasksHTML();
     }, {once: true})
 }
@@ -77,8 +78,6 @@ function addTaskForm() {
         <label for="projects"></label>
         <select name="projects" id="projects" autocomplete="off">
             <option value="saumyazaumya">Tasks</option>
-            <option value="project1">Project 1</option>
-            <option value="project2">Project 2</option>
         </select>
 
         <label for="descrip"></label>
@@ -88,6 +87,15 @@ function addTaskForm() {
         <button type="submit" class="button submitButton">Submit</button>
         `
         document.querySelector(".onetwo").appendChild(form);
+        for (let i=0; i<projects.length; i++) {
+            let projectName = projects[i].name;
+            let projectForm = document.getElementById("projects")
+            let newOption = document.createElement("option");
+            newOption.value = projectName;
+            newOption.textContent = projectName;
+            projectForm.appendChild(newOption)
+
+        }
         switchTaskStatus();
         addTaskSubmit();
         removeTask();
