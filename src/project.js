@@ -23,7 +23,6 @@ export function createProject(name) {
             }
         }
     };
-    projects.push(project);
     return project;
 }
 

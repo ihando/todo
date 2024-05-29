@@ -3,6 +3,8 @@ import { projects } from "./project";
 
 
 export let allTodo = [];
+
+//codes the submit button for the add task form
 function addTaskSubmit() {
     document.querySelector(".taskform").addEventListener("submit", e => {
         e.preventDefault();
@@ -44,6 +46,7 @@ function addTaskSubmit() {
             allTodo.push(tempTodo);
         }
         document.querySelector(".taskform").reset();
+        removeTaskForm();
     }, {once: true})
 }
 let task = true;
@@ -77,7 +80,7 @@ function addTaskForm() {
         </select>
 
         <label for="descrip"></label>
-        <input type="text" id="descrip" name="descrip" placeholder="Notes (optional)" autocomplete="off">
+        <input type="text" id="descrip" name="descrip" placeholder="Notes (optional)" autocomplete="off" maxlength="20">
 
         <button type="button" class="button close">Close</button>
         <button type="submit" class="button submitButton">Submit</button>
