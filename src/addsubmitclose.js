@@ -1,10 +1,11 @@
 import { createTodo } from "./maketodo";
 import { projects } from "./project";
+import { changeAllTasksHTML } from "./htmlchange";
 
 
 export let allTodo = [];
 
-//codes the submit button for the add task form
+//codes the submit button for the add task form and changes the allTasks HTML
 function addTaskSubmit() {
     document.querySelector(".taskform").addEventListener("submit", e => {
         e.preventDefault();
@@ -47,6 +48,7 @@ function addTaskSubmit() {
         }
         document.querySelector(".taskform").reset();
         removeTaskForm();
+        changeAllTasksHTML();
     }, {once: true})
 }
 let task = true;

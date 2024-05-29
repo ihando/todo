@@ -2,6 +2,7 @@ import { allTodo } from "./addsubmitclose"
 
 
 export function changeAllTasksHTML() {
+    resetAllTasksHTML();
     for (let i = 0; i < allTodo.length; i++) {
         let status = false;
         let tempName = allTodo[i].title;
@@ -36,4 +37,9 @@ export function changeAllTasksHTML() {
         newLine.classList.add("line");
         taskcontainer.appendChild(newLine);
     }
+}
+
+function resetAllTasksHTML() {
+    let taskcontainer = document.querySelector(".taskcontainer")
+    taskcontainer.innerHTML = "";
 }
