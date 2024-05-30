@@ -56,14 +56,40 @@ export function sidebarProjectsHTML() {
         newProject.classList.add("one")
         newProject.classList.add("project")
         newProject.innerHTML = `
-            <button class="text">${name}</button>
+            <div class="text">${name}</div>
             <div class="number">${taskNumber}</div>
+            <div class="hover"></div>
+            <div class="popup">
+                <button class="projectButton" id="deleteP">Delete</button>
+                <button class="projectButton" id="renameP">Rename</button>
+            </div>
         `;
         projectContainer.appendChild(newProject);
+        const hoverButton = newProject.querySelector(".hover");
+        const popup = newProject.querySelector(".popup");
+        hoverSidebarHTML(hoverButton, popup);
     }
 }
 
 function resetSidebarProjectsHTML() {
     let projectContainer = document.querySelector(".myprojects");
     projectContainer.innerHTML = "";
+}
+
+export function hoverSidebarHTML(hoverButton, popup) {
+    
+    hoverButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        document.querySelectorAll(".popup").forEach(p => {
+            p.style.display = 'none';
+        });
+        popup.style.display = 'block';
+    });
+    
+
+    document.addEventListener('click', (event) => {
+        if (!popup.contains(event.target) && !hoverButton.contains(event.target)) {
+            popup.style.display = 'none';
+        }
+    });
 }

@@ -20,6 +20,41 @@ body, html {
     display: flex;
     justify-content: space-between;
 }
+.number {
+    
+    margin-right: 1rem;
+    display:block;
+}
+.hover {
+    margin-right: .8rem;
+    display:none;
+    width: 1rem;
+    height: 1rem;
+    background-color: blueviolet;
+}
+.project {
+    width: 100%;
+    position: relative;
+}
+.project:hover .hover {
+    display:block;
+}
+.project:hover .number {
+    display: none;
+}
+.popup {
+    display: none;
+    position: absolute;
+    left: 15rem;
+    bottom: 1rem;
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    z-index: 1000;
+}
+.projectButton {
+    width: 100%;
+}
 .onetwo {
     display: flex;
     flex-direction: column;
