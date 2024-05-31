@@ -17,6 +17,7 @@ export function changeAllTasksHTML() {
         let taskcontainer = document.querySelector(".taskcontainer");
         var newTask = document.createElement("div");
         newTask.classList.add("task");
+        newTask.setAttribute('data-project-index', i);
         newTask.innerHTML = `
             <div class="markdone"></div>
             <div class="things">
@@ -35,6 +36,9 @@ export function changeAllTasksHTML() {
             newDiv.classList.add("projectName");
             thingsDiv.appendChild(newDiv); 
         }
+        let deletebutton = newTask.querySelector(".markdone")
+        deletebutton.addEventListener("click", () => deleteTask(tempName, i));
+
         var newLine = document.createElement("div");
         newLine.classList.add("line");
         taskcontainer.appendChild(newLine);
@@ -55,6 +59,7 @@ export function sidebarProjectsHTML() {
         let newProject = document.createElement("div");
         newProject.classList.add("one")
         newProject.classList.add("project")
+        newProject.setAttribute('data-project-index', i);
         newProject.innerHTML = `
             <div class="text">${name}</div>
             <div class="number">${taskNumber}</div>
@@ -68,6 +73,11 @@ export function sidebarProjectsHTML() {
         const hoverButton = newProject.querySelector(".hover");
         const popup = newProject.querySelector(".popup");
         hoverSidebarHTML(hoverButton, popup);
+
+        const deleteButton = newProject.querySelector("#deleteP");
+        const renameButton = newProject.querySelector("#renameP");
+        deleteButton.addEventListener('click', () => deleteProject(i));
+        renameButton.addEventListener('click', () => renameProject(i));
     }
 }
 
@@ -93,3 +103,36 @@ export function hoverSidebarHTML(hoverButton, popup) {
         }
     });
 }
+
+
+function deleteProject(index) {
+    projects.splice(index, 1);
+    sidebarProjectsHTML(); 
+}
+
+function renameProject(index) {
+    const newName = prompt("Enter the new project name:");
+    if (newName) {
+        projects[index].name = newName;
+        sidebarProjectsHTML();
+    }
+}
+
+function deleteTask(name, index) {
+    if (allTodo[index].projectName != null) {
+        let tempProject = allTodo[index].projectName;
+        for (let i=0; i<projects.length; i++) {
+            if (projects[i].name === tempProject) {
+                for (let j=0; j<projects[i].todoList.length; j++) {
+                    if (projects[i].todoList[j].title === name) {
+                        projects[i].todoList.splice(j, 1)
+                    }
+                }
+            }
+        }
+    }
+    allTodo.splice(index, 1)
+    changeAllTasksHTML();
+    sidebarProjectsHTML();
+}
+
