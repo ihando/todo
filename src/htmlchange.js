@@ -1,9 +1,12 @@
 import { allTodo } from "./addsubmitclose"
 import { projects } from "./project";
 
-
+export let topstatus = true;
+export let displayindex = 0;
 export function changeAllTasksHTML() {
     resetAllTasksHTML();
+    topstatus=true;
+    document.querySelector("#projectname").innerHTML= "All Tasks"
     for (let i = 0; i < allTodo.length; i++) {
         let tempProject;
         let status = false;
@@ -74,6 +77,8 @@ export function sidebarProjectsHTML() {
         const popup = newProject.querySelector(".popup");
         hoverSidebarHTML(hoverButton, popup);
 
+        newProject.addEventListener("click", () => displayProject(i))
+
         const deleteButton = newProject.querySelector("#deleteP");
         const renameButton = newProject.querySelector("#renameP");
         deleteButton.addEventListener('click', () => deleteProject(i));
@@ -136,3 +141,57 @@ function deleteTask(name, index) {
     sidebarProjectsHTML();
 }
 
+export function displayProject(index) {
+    topstatus = false;
+    if (index < 0 || index >= projects.length) {
+        return;
+    }
+    displayindex = index;
+    let project = projects[index];
+    resetAllTasksHTML();
+    document.querySelector("#projectname").innerHTML = project.name;
+    for (let i = 0; i < project.todoList.length; i++) {
+        let tempProject = project.name;
+        let tempName = project.todoList[i].title;
+        let tempDescrip = project.todoList[i].description;
+        let tempDate = project.todoList[i].dueDate;
+
+        let taskcontainer = document.querySelector(".taskcontainer");
+        var newTask = document.createElement("div");
+        newTask.classList.add("task");
+        newTask.setAttribute('data-task-index', i);
+        newTask.innerHTML = `
+            <div class="markdone"></div>
+            <div class="things">
+                <div class="taskname">${tempName}</div>
+                <div class="description">${tempDescrip}</div>
+                <div class="date">${tempDate}</div>
+            </div>
+        `;
+        taskcontainer.appendChild(newTask);
+
+        let thingsDiv = newTask.querySelector(".things");
+        let deletebutton = newTask.querySelector(".markdone");
+        deletebutton.addEventListener("click", () => deleteTaskProject(tempProject, i));
+
+        var newLine = document.createElement("div");
+        newLine.classList.add("line");
+        taskcontainer.appendChild(newLine);
+    }
+}
+
+//deletes the task in the project
+function deleteTaskProject(project, index) {
+    for (let i=0; i<projects.length; i++) {
+        if (project === projects[i].name) {
+            projects[i].todoList.splice(index, 1)
+            displayProject(i);
+        }
+    }
+    
+    sidebarProjectsHTML();
+}
+
+function updateAllTaskSidebarNumber() {
+    document.querySelector("#alltasknumber").innerHTML = allTodo.length;
+}
