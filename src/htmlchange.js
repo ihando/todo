@@ -111,7 +111,19 @@ export function hoverSidebarHTML(hoverButton, popup) {
 
 
 function deleteProject(index) {
-    projects.splice(index, 1);
+    let removedprojects = projects.splice(index, 1);
+    let removedproject = removedprojects[0];
+    for (let i=0; i<removedproject.todoList.length; i++) {
+        let temptask = removedproject.todoList[i].title
+        let tempproject = removedproject.name
+        for (let j=0; j<allTodo.length; j++) {
+            if (temptask === allTodo[j].title && tempproject === allTodo[j].projectName) {
+                allTodo.splice(j, 1)
+                break;
+            }
+        }
+    }
+    changeAllTasksHTML();
     sidebarProjectsHTML(); 
 }
 
@@ -182,9 +194,18 @@ export function displayProject(index) {
 
 //deletes the task in the project
 function deleteTaskProject(project, index) {
-    for (let i=0; i<projects.length; i++) {
+    for (let i = 0; i < projects.length; i++) {
         if (project === projects[i].name) {
-            projects[i].todoList.splice(index, 1)
+            let removedTasks = projects[i].todoList.splice(index, 1);
+            let removedTask = removedTasks[0];
+            
+            for (let j = 0; j < allTodo.length; j++) {
+                if (removedTask && removedTask.title === allTodo[j].title) {
+                    allTodo.splice(j, 1);
+                    break; 
+                }
+            }
+
             displayProject(i);
         }
     }

@@ -53,7 +53,6 @@ function addTaskSubmit() {
             changeAllTasksHTML();
         } else {
             displayProject(displayindex);
-            console.log("hi")
         }
     }, {once: true})
 }
