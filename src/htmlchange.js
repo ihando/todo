@@ -123,6 +123,7 @@ function deleteProject(index) {
             }
         }
     }
+    updateAllTaskSidebarNumber()
     changeAllTasksHTML();
     sidebarProjectsHTML(); 
 }
@@ -149,6 +150,7 @@ function deleteTask(name, index) {
         }
     }
     allTodo.splice(index, 1)
+    updateAllTaskSidebarNumber()
     changeAllTasksHTML();
     sidebarProjectsHTML();
 }
@@ -209,7 +211,7 @@ function deleteTaskProject(project, index) {
             displayProject(i);
         }
     }
-    
+    updateAllTaskSidebarNumber()
     sidebarProjectsHTML();
 }
 

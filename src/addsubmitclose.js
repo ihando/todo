@@ -1,6 +1,6 @@
 import { createTodo } from "./maketodo";
 import { projects } from "./project";
-import { changeAllTasksHTML, sidebarProjectsHTML } from "./htmlchange";
+import { changeAllTasksHTML, sidebarProjectsHTML, updateAllTaskSidebarNumber } from "./htmlchange";
 import {topstatus, displayindex, displayProject} from "./htmlchange"
 
 export let allTodo = [];
@@ -49,6 +49,7 @@ function addTaskSubmit() {
         document.querySelector(".taskform").reset();
         removeTaskForm();
         sidebarProjectsHTML();
+        updateAllTaskSidebarNumber()
         if (topstatus) {
             changeAllTasksHTML();
         } else {
