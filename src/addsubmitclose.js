@@ -3,6 +3,9 @@ import { projects } from "./project";
 import { changeAllTasksHTML, sidebarProjectsHTML, updateAllTaskSidebarNumber } from "./htmlchange";
 import {topstatus, displayindex, displayProject} from "./htmlchange"
 import { saveData } from "./localstorage";
+import { todaystatus } from "./dates";
+import { displayTasksDueToday } from "./dates";
+import { sidebarDueToday } from "./dates";
 
 export let allTodo = [];
 
@@ -51,8 +54,13 @@ function addTaskSubmit() {
         document.querySelector(".taskform").reset();
         removeTaskForm();
         sidebarProjectsHTML();
-        updateAllTaskSidebarNumber()
-        if (topstatus) {
+        updateAllTaskSidebarNumber();
+        sidebarDueToday();
+
+        if (todaystatus) {
+            displayTasksDueToday();
+        }
+        else if (topstatus) {
             changeAllTasksHTML();
         } else {
             displayProject(displayindex);

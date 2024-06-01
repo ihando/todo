@@ -1,6 +1,7 @@
 import { projects } from "./project";
 import { allTodo } from "./addsubmitclose";
-import { sidebarProjectsHTML, changeAllTasksHTML } from "./htmlchange";
+import { sidebarProjectsHTML, changeAllTasksHTML, updateAllTaskSidebarNumber } from "./htmlchange";
+import { sidebarDueToday } from "./dates";
 
 export function saveData() {
     localStorage.setItem('projects', JSON.stringify(projects));
@@ -27,5 +28,7 @@ export function resetData() {
         allTodo = [];
         sidebarProjectsHTML();
         changeAllTasksHTML(); 
+        updateAllTaskSidebarNumber();
+        sidebarDueToday()
     });
 }
