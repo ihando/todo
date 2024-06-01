@@ -1,5 +1,6 @@
 import { projects, createProject } from "./project";
 import { sidebarProjectsHTML } from "./htmlchange";
+import { saveData } from "./localstorage";
 
 let projectStatus = true;
 function changeStatus() {
@@ -20,6 +21,7 @@ function addProjectSubmit() {
         if (status) {
             let tempProject = createProject(name);
             projects.push(tempProject);
+            saveData();
         }
         document.querySelector(".projectForm").reset();
         removeProjectForm();

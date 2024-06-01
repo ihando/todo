@@ -2,6 +2,7 @@ import { createTodo } from "./maketodo";
 import { projects } from "./project";
 import { changeAllTasksHTML, sidebarProjectsHTML, updateAllTaskSidebarNumber } from "./htmlchange";
 import {topstatus, displayindex, displayProject} from "./htmlchange"
+import { saveData } from "./localstorage";
 
 export let allTodo = [];
 
@@ -45,6 +46,7 @@ function addTaskSubmit() {
         if (status) {
             let tempTodo = createTodo(name, description, date, prio, projectName);
             allTodo.push(tempTodo);
+            saveData()
         }
         document.querySelector(".taskform").reset();
         removeTaskForm();

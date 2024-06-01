@@ -1,5 +1,7 @@
 import { allTodo } from "./addsubmitclose"
 import { projects } from "./project";
+import { saveData } from "./localstorage";
+
 
 export let topstatus = true;
 export let displayindex = 0;
@@ -123,6 +125,7 @@ function deleteProject(index) {
             }
         }
     }
+    saveData()
     updateAllTaskSidebarNumber()
     changeAllTasksHTML();
     sidebarProjectsHTML(); 
@@ -150,6 +153,7 @@ function deleteTask(name, index) {
         }
     }
     allTodo.splice(index, 1)
+    saveData()
     updateAllTaskSidebarNumber()
     changeAllTasksHTML();
     sidebarProjectsHTML();
@@ -211,10 +215,11 @@ function deleteTaskProject(project, index) {
             displayProject(i);
         }
     }
+    saveData()
     updateAllTaskSidebarNumber()
     sidebarProjectsHTML();
 }
 
-function updateAllTaskSidebarNumber() {
+export function updateAllTaskSidebarNumber() {
     document.querySelector("#alltasknumber").innerHTML = allTodo.length;
 }
