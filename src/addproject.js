@@ -15,7 +15,6 @@ function addProjectSubmit() {
         for (let i=0; i<projects.length; i++) {
             if (projects[i].name === name) {
                 status = false;
-                console.log("hi")
             }
         }
         if (status) {

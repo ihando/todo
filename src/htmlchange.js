@@ -1,14 +1,15 @@
 import { allTodo } from "./addsubmitclose"
 import { projects } from "./project";
 import { saveData } from "./localstorage";
-import { todaystatus } from "./dates";
-import { sidebarDueToday } from "./dates";
+import { overduestatus, sidebarOverdue, todaystatus } from "./dates";
+import { sidebarDueToday} from "./dates";
 export let topstatus = true;
 export let displayindex = 0;
 export function changeAllTasksHTML() {
     resetAllTasksHTML();
     topstatus=true;
     todaystatus=false;
+    overduestatus=false;
     document.querySelector("#projectname").innerHTML= "All Tasks"
     for (let i = 0; i < allTodo.length; i++) {
         let tempProject;
@@ -129,6 +130,7 @@ function deleteProject(index) {
     saveData()
     updateAllTaskSidebarNumber()
     sidebarDueToday();
+    sidebarOverdue();
     changeAllTasksHTML();
     sidebarProjectsHTML(); 
 }
@@ -158,6 +160,7 @@ function deleteTask(name, index) {
     saveData();
     updateAllTaskSidebarNumber();
     sidebarDueToday();
+    sidebarOverdue();
     changeAllTasksHTML();
     sidebarProjectsHTML();
 }
@@ -219,9 +222,10 @@ function deleteTaskProject(project, index) {
             displayProject(i);
         }
     }
-    saveData()
-    updateAllTaskSidebarNumber()
-    sidebarDueToday()
+    saveData();
+    updateAllTaskSidebarNumber();
+    sidebarDueToday();
+    sidebarOverdue();
     sidebarProjectsHTML();
 }
 

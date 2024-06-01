@@ -3,8 +3,8 @@ import { projects } from "./project";
 import { changeAllTasksHTML, sidebarProjectsHTML, updateAllTaskSidebarNumber } from "./htmlchange";
 import {topstatus, displayindex, displayProject} from "./htmlchange"
 import { saveData } from "./localstorage";
-import { todaystatus } from "./dates";
-import { displayTasksDueToday } from "./dates";
+import { overduestatus, sidebarOverdue, todaystatus } from "./dates";
+import { displayTasksDueToday, displayTasksOverdue } from "./dates";
 import { sidebarDueToday } from "./dates";
 
 export let allTodo = [];
@@ -56,9 +56,12 @@ function addTaskSubmit() {
         sidebarProjectsHTML();
         updateAllTaskSidebarNumber();
         sidebarDueToday();
+        sidebarOverdue();
 
         if (todaystatus) {
             displayTasksDueToday();
+        } else if (overduestatus) {
+            displayTasksOverdue();
         }
         else if (topstatus) {
             changeAllTasksHTML();
