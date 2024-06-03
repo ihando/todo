@@ -33,9 +33,11 @@ function addProjectForm() {
         var form = document.createElement("form");
         form.classList.add("projectForm");
         form.innerHTML = `
-        <button type="button" class="closeProject">XXXXXXXXXX</button>
+        <div class = "text">
+            <button type="button" class="closeProject pointer">X</button>
+        </div>
         <label for="name"></label>
-        <input type="text" id="name" name="name" placeholder="Project name + [Enter]" required autocomplete="off">
+        <input type="text" id="name" class = "projectbox" name="name" placeholder="Project name + [Enter]" required autocomplete="off">
         <button type="submit" style="display:none"></button>
         `
         document.querySelector(".poop").appendChild(form);

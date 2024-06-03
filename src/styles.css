@@ -86,21 +86,70 @@ body, html {
 .lt {
     font-size: .9rem;
 }
+.create {
+    background-color: #04153E;
+    color: white;
+    border: 0;
+    margin-left: .8rem;
+    margin-top: .5rem;
+
+}
+.create:hover {
+    color: orangered;
+}
+.pointer:hover {
+    cursor: pointer;
+}
+.resetLocalStorage {
+    border: none;
+}
+.projectForm {
+    display: flex;
+    margin-top: 1rem;
+}
+.closeProject {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: red;
+    border-radius: 50%;
+    border: 1px solid red;
+    background-color: #04153E;
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-left: 1rem;
+    margin-right: .5rem;
+}
+.projectbox {
+    border-radius: 2px; 
+    box-shadow: none;
+    border: 1px solid gray;
+    height: 2rem;
+    background-color: #2F333D;
+    width: 13rem;
+    color: #A5ABB8;
+}
 .number {
     margin-right: 1rem;
     display:block;
+    color: #8F95A5;
 }
+
 .numberflex {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 .hover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-right: .8rem;
     display:none;
-    width: 1rem;
-    height: 1rem;
-    background-color: blueviolet;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top:.2rem;
+    background-color:#04153E;
 }
 .myprojects {
     
@@ -139,8 +188,7 @@ body, html {
 .resetflex {
     height: 2rem;
     display: flex;
-    flex-direction: column;
-    justify-content: end;
+    justify-content: start;
 }
 #resetLocalStorage {
     

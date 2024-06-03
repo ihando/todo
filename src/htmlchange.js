@@ -3,6 +3,8 @@ import { projects } from "./project";
 import { saveData } from "./localstorage";
 import { overduestatus, sidebarOverdue, todaystatus } from "./dates";
 import { sidebarDueToday} from "./dates";
+import foldersvg from "./svg/folder-outline.svg"
+import dotsvg from "./svg/dots-horizontal.svg"
 export let topstatus = true;
 export let displayindex = 0;
 export function changeAllTasksHTML() {
@@ -66,23 +68,33 @@ export function sidebarProjectsHTML() {
         let newProject = document.createElement("div");
         newProject.classList.add("one")
         newProject.classList.add("project")
+        newProject.classList.add("hoverback")
+        newProject.classList.add("pointer")
         newProject.setAttribute('data-project-index', i);
         newProject.innerHTML = `
             <div class="picflex2">
-                <div class="text">
-                    <img class="pic2" src="./svg/folder-outline.svg" alt="folder">
+                <div class="text weird">
                 </div>
-                <div class="text wt">${name}</div>
+                <div class="text wt lt">${name}</div>
             </div>
             <div class="number numberflex">${taskNumber}</div>
-            <div class="hover"></div>
+            <div class="hover">
+
+            </div>
             <div class="popup">
                 <button class="projectButton" id="deleteP">Delete</button>
                 <button class="projectButton" id="renameP">Rename</button>
             </div>
         `;
         projectContainer.appendChild(newProject);
+        let img = document.createElement('img');
+        img.src = foldersvg;
+        img.classList.add("pic2");
+        newProject.querySelector(".weird").appendChild(img)
         const hoverButton = newProject.querySelector(".hover");
+        let img2 = document.createElement("img");
+        img2.src = dotsvg;
+        hoverButton.appendChild(img2)
         const popup = newProject.querySelector(".popup");
         hoverSidebarHTML(hoverButton, popup);
 

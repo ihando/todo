@@ -16,8 +16,22 @@ document.addEventListener("DOMContentLoaded", function() {
     updateAllTaskSidebarNumber();
     sidebarDueToday();
     sidebarOverdue();
+    clickColor();
     resetData();
     
 });
 
-
+function clickColor() {
+    const divs = document.querySelectorAll('.hoverback');
+    let currentDiv = null;
+    divs.forEach(div => {
+        div.addEventListener('click', () => {
+            if (currentDiv) {
+                currentDiv.style.backgroundColor = '';
+            }
+            
+            div.style.backgroundColor = '#93A3CA'; 
+            currentDiv = div;
+        });
+    })
+}

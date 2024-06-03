@@ -21,7 +21,7 @@
                         <button class="addtask hi wt text" >Add Task</button>
                     </div>
                 </div>
-                <div class="one alltasks hi">
+                <div class="one alltasks hi hoverback pointer">
                     <div class="picflex2">
                         <div class="text">
                             <img class="pic2" src="<%= require('./svg/format-list-checks.svg') %>" alt="check">
@@ -32,7 +32,7 @@
                         <div id = "alltasknumber" class="number">0</div>
                     </div>
                 </div>
-                <div class="one today hi">
+                <div class="one today hi hoverback pointer">
                     <div class="picflex2">
                         <div class="text">
                             <img class="pic2" src="<%= require('./svg/calendar-month-outline.svg') %>" alt="calendar">
@@ -43,7 +43,7 @@
                         <div id = "todaynumber" class="number">0</div>
                     </div>
                 </div>
-                <div class="one overdue hi">
+                <div class="one overdue hi hoverback pointer">
                     <div class="picflex2">
                         <div class="text">
                             <img class="pic2" src="<%= require('./svg/clock-time-five-outline.svg') %>" alt="clock">
@@ -70,11 +70,11 @@
                     </div>
                 </div>
                 <div class="poop">
-                    <button class="create">+ Create a new project</button>
+                    <button class="create pointer">+ Create a new project</button>
                 </div>
             </div>
             <div class="resetflex">
-                <button id="resetLocalStorage">Reset All</button>
+                <button class ="create pointer" id="resetLocalStorage">Reset All</button>
             </div>
         </div>
         <div class="mainpage">
