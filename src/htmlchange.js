@@ -68,8 +68,13 @@ export function sidebarProjectsHTML() {
         newProject.classList.add("project")
         newProject.setAttribute('data-project-index', i);
         newProject.innerHTML = `
-            <div class="text">${name}</div>
-            <div class="number">${taskNumber}</div>
+            <div class="picflex2">
+                <div class="text">
+                    <img class="pic2" src="./svg/folder-outline.svg" alt="folder">
+                </div>
+                <div class="text wt">${name}</div>
+            </div>
+            <div class="number numberflex">${taskNumber}</div>
             <div class="hover"></div>
             <div class="popup">
                 <button class="projectButton" id="deleteP">Delete</button>

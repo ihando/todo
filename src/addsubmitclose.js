@@ -17,7 +17,6 @@ function addTaskSubmit() {
         let project = null;
         const name = document.getElementById("name").value;
         const date = document.getElementById("date").value;
-        const prio = document.getElementById("prio").value;
         let projectName = document.getElementById("projects").value;
         //if all tasks dropdown is selected, set the projectName to null (not apart of any project)
         if (projectName === "saumyazaumya") {
@@ -47,7 +46,7 @@ function addTaskSubmit() {
         }
         //runs if the two checks above pass
         if (status) {
-            let tempTodo = createTodo(name, description, date, prio, projectName);
+            let tempTodo = createTodo(name, description, date, projectName);
             allTodo.push(tempTodo);
             saveData()
         }
@@ -84,14 +83,6 @@ function addTaskForm() {
 
         <label for="date"></label>
         <input type="date" id="date" name="date" required autocomplete="off"><br>
-
-        <label for="prio"></label>
-        <select name="prio" id="prio" autocomplete="off">
-            <option value="none" selected>No priority</option>
-            <option value="low">Low priority</option>
-            <option value="mid">Medium priority</option>
-            <option value="high">High priority</option>
-        </select><br>
 
         <label for="projects"></label>
         <select name="projects" id="projects" autocomplete="off">

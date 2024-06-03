@@ -1,12 +1,11 @@
 import { projects, createProject } from "./project";
 
-export function createTodo(title, description, dueDate, priority, projectName){
+export function createTodo(title, description, dueDate, projectName){
 
     const todo = {
         title: title,
         description: description,
         dueDate: dueDate,
-        priority: priority,
         complete: false,
         projectName: projectName,
         markComplete: function() {

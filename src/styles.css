@@ -2,6 +2,8 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: "Roboto";
+    box-sizing: border-box;
+    background-color: #04153E;
 }
 
 .container {
@@ -13,17 +15,85 @@ body, html {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 20%;
-    background-color: antiquewhite;
+    width: 15%;
+    background-color: #04153E;
+    margin: .6rem;
+}
+.sidebarcontainer {
+    display:flex;
+    flex-direction: column;
+    height: 25%;
+}
+.projectcontainer {
+    display: flex;
+    flex-direction: column;
+    height: 65%;
+}
+.hi {
+    flex: 1;
+}
+.wt {
+    color: white;
 }
 .one {
     display: flex;
     justify-content: space-between;
 }
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.title {
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+.picflex {
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    margin-left: .7rem;
+}
+.picflex2 {
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    margin-left: .95rem;
+}
+.pic {
+    height: 2rem;
+    width: 2rem;
+}
+.pic2 {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: .6rem;
+}
+.addtask {
+    background-color: #04153E;
+    font-weight: 600;
+    border: 0;
+    font-size: .9rem;
+    height: 100%;
+}
+.projecttitle {
+    font-weight: 600;
+    margin-left: 1.2rem;
+    font-size: .95rem;
+}
+.lt {
+    font-size: .9rem;
+}
 .number {
-    
     margin-right: 1rem;
     display:block;
+}
+.numberflex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .hover {
     margin-right: .8rem;
@@ -32,9 +102,13 @@ body, html {
     height: 1rem;
     background-color: blueviolet;
 }
+.myprojects {
+    
+}
 .project {
     width: 100%;
     position: relative;
+    height: 1.9rem;
 }
 .project:hover .hover {
     display:block;
@@ -62,12 +136,20 @@ body, html {
 .title {
     font-size: 30px;
 }
-
+.resetflex {
+    height: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+#resetLocalStorage {
+    
+}
 .mainpage {
     display: flex;
     justify-content: center;
     height: 100%;
-    width: 80%;
+    width: 85%;
     background-color: aquamarine;
 }
 

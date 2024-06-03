@@ -38,7 +38,7 @@ function addProjectForm() {
         <input type="text" id="name" name="name" placeholder="Project name + [Enter]" required autocomplete="off">
         <button type="submit" style="display:none"></button>
         `
-        document.querySelector(".sidebar").appendChild(form);
+        document.querySelector(".poop").appendChild(form);
         changeStatus();
         addProjectSubmit();
         removeProjectFormDOM();
@@ -48,7 +48,7 @@ function addProjectForm() {
 function removeProjectForm() {
     if (!projectStatus) {
         var form = document.querySelector(".projectForm")
-        document.querySelector(".sidebar").removeChild(form);
+        document.querySelector(".poop").removeChild(form);
         form.innerHTML = "";
         form.classList.remove("projectForm");
         changeStatus();
