@@ -92,8 +92,8 @@ function addTaskForm() {
         <label for="descrip"></label>
         <input type="text" id="descrip" name="descrip" placeholder="Notes (optional)" autocomplete="off" maxlength="20">
 
-        <button type="button" class="button close">Close</button>
-        <button type="submit" class="button submitButton">Submit</button>
+        <button type="button" class="button close pointer">Close</button>
+        <button type="submit" class="button submitButton pointer">Submit</button>
         `
         document.querySelector(".onetwo").appendChild(form);
         for (let i=0; i<projects.length; i++) {

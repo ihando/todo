@@ -168,11 +168,11 @@ body, html {
 .popup {
     display: none;
     position: absolute;
-    left: 15rem;
-    bottom: 1rem;
+    left: 17rem;
+    bottom: 1.3rem;
     width: 100px;
-    height: 50px;
-    background-color: pink;
+    height: 40px;
+    background-color: #727887;
     z-index: 1000;
 }
 .projectButton {
@@ -198,7 +198,7 @@ body, html {
     justify-content: center;
     height: 100%;
     width: 85%;
-    background-color: aquamarine;
+    background-color: #37476F;
 }
 
 .mainpagecontainer {
@@ -206,7 +206,7 @@ body, html {
     flex-direction: column;
     width: 50%;
     height: 100%;
-    background-color: cadetblue;
+    background-color: #37476F;
 }
 .formContainer {
     width: 100%;
@@ -215,12 +215,31 @@ body, html {
 .taskform {
     height: 100%;
     width: 100%;
-    background-color: chocolate;
+    background-color: #53689B;
 }
 .button {
-    height: 1rem;
+    height: 1.5rem;
     width: 6rem;
-    background-color: aqua;
+    background-color: #2D3B5C;
+    border: 0;
+    border-radius: 2px;
+}
+.submitButton {
+    color: white;
+    background-color: orangered;
+}
+.hihi {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+#projectname {
+    color: white;
+    font-size: 20px;
+}
+.taskbutton {
+    background-color: #37476F;
+    color: white;
+    border: 0;
 }
 .line {
     width: 100%;
@@ -237,11 +256,17 @@ body, html {
     width: 20px;
     border-radius: 50%;
     background-color: aqua;
+    margin-top: .5rem;
+
 }
 .things {
+    margin-left: .7rem;
     display: flex;
     flex-direction: column;
     height: 4rem;
     width: 100%;
-    background-color:blanchedalmond;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    background-color:#37476F;
+    color: white;
 }

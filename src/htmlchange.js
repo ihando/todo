@@ -28,7 +28,7 @@ export function changeAllTasksHTML() {
         newTask.classList.add("task");
         newTask.setAttribute('data-project-index', i);
         newTask.innerHTML = `
-            <div class="markdone"></div>
+            <div class="markdone pointer"></div>
             <div class="things">
                 <div class="taskname">${tempName}</div>
                 <div class="description">${tempDescrip}</div>
